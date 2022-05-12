@@ -35,6 +35,12 @@ positions my_player::move_to_start(int piece, positions positions_){
     
 }
 
+void my_player::increment_pieces_in_goal(){
+    if (pieces_in_goal < 4){
+        pieces_in_goal++;
+    }
+}
+
 int my_player::is_star_tile(int tile)
 {
     switch(tile) // Check for star
@@ -151,8 +157,6 @@ positions my_player::get_post_move_pos(int piece_moving){
 
     return post_move_pos;
 
-
-
 }
 
 int my_player::make_decision()
@@ -215,7 +219,54 @@ int my_player::make_decision()
 
 int my_player::get_q_idx(){
 
+    //Q-table index variables 
+    // Used to check own pieces //
+    int in_goal_score               = 0;
+    int safe_score                  = 0; // Pieces safe from enemys   
+    int in_danger_score             = 0; //6 or less pieces in front of an enemy
+    int within_goal_range_score     = 0; //Number of pieces able to get to the goal
+    int unproctected__score         = 0; //Number of pieces not on a globe
+    // Used to check if ahead or behind opponents //
+    int best_opponet_score          = 0; //Score of best opponent 
+    int second_opponet_score        = 0; //Score of 2nd best opponent   
+
+    //Check if you already won
+    if(pieces_in_goal == 4){
+        return Q_Table::WON_STATE;
+    }
+    // PIP = Pieces In Play
+    int n_PIP = 4 - pieces_in_goal;
+    int PIP_unprotected = get_unprotected_PIP(n_PIP);
+
+    int opponent_1_PIP = calc_opponent_PIP(1);
+    int opponent_2_PIP = calc_opponent_PIP(2);
+    int opponent_3_PIP = calc_opponent_PIP(3);
+    int best_opponent = get_lowest(opponent_1_PIP, opponent_2_PIP, opponent_3_PIP);
+    int second_opponent = get_middle(opponent_1_PIP, opponent_2_PIP, opponent_3_PIP);
+    int pip_diff = second_opponent - best_opponent;
+    int diff_divider = 7;
+    
+    //Assigning the Q-table scores
+    in_goal_score = pieces_in_goal;
+
+
 
 }
+
+int my_player::get_unprotected_PIP(int n_PIP){
+
+    int total = 0;
+
+    for(int i = 0; i < 4; i++)
+    {
+        int square = post_move_position[i];
+        if(is_globe_tile(square) == false)
+            total++;
+    }
+
+    return total;
+
+}
+
 
 
