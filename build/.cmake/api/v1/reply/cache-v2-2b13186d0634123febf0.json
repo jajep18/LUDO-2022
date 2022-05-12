@@ -2,38 +2,6 @@
 	"entries" : 
 	[
 		{
-			"name" : "CMAKE_ADDR2LINE",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Path to a program."
-				}
-			],
-			"type" : "FILEPATH",
-			"value" : "/bin/addr2line"
-		},
-		{
-			"name" : "CMAKE_AR",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Path to a program."
-				}
-			],
-			"type" : "FILEPATH",
-			"value" : "/bin/ar"
-		},
-		{
 			"name" : "CMAKE_BUILD_TYPE",
 			"properties" : 
 			[
@@ -55,7 +23,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/jacob/Documents/SDU/8. Semester/AI/LUDO/build"
+			"value" : "c:/Users/Jacob/Documents/LUDO-2022/build"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -79,7 +47,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "16"
+			"value" : "17"
 		},
 		{
 			"name" : "CMAKE_CACHE_PATCH_VERSION",
@@ -91,23 +59,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "3"
-		},
-		{
-			"name" : "CMAKE_COLOR_MAKEFILE",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Enable/Disable color output during build."
-				}
-			],
-			"type" : "BOOL",
-			"value" : "ON"
+			"value" : "20032601"
 		},
 		{
 			"name" : "CMAKE_COMMAND",
@@ -119,7 +71,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/usr/bin/cmake"
+			"value" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe"
 		},
 		{
 			"name" : "CMAKE_CPACK_COMMAND",
@@ -131,7 +83,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/usr/bin/cpack"
+			"value" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cpack.exe"
 		},
 		{
 			"name" : "CMAKE_CTEST_COMMAND",
@@ -143,7 +95,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/usr/bin/ctest"
+			"value" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/ctest.exe"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER",
@@ -159,7 +111,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/bin/x86_64-linux-gnu-g++-9"
+			"value" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/Llvm/bin/clang-cl.exe"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER_AR",
@@ -171,11 +123,11 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "A wrapper around 'ar' adding the appropriate '--plugin' option for the GCC compiler"
+					"value" : "LLVM archiver"
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/bin/gcc-ar-9"
+			"value" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/Llvm/bin/llvm-ar.exe"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER_RANLIB",
@@ -187,11 +139,11 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "A wrapper around 'ranlib' adding the appropriate '--plugin' option for the GCC compiler"
+					"value" : "Generate index for LLVM archive"
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/bin/gcc-ranlib-9"
+			"value" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/Llvm/bin/llvm-ranlib.exe"
 		},
 		{
 			"name" : "CMAKE_CXX_FLAGS",
@@ -207,7 +159,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : ""
+			"value" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
 		},
 		{
 			"name" : "CMAKE_CXX_FLAGS_DEBUG",
@@ -223,7 +175,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : "-g"
+			"value" : "/MDd /Zi /Ob0 /Od /RTC1"
 		},
 		{
 			"name" : "CMAKE_CXX_FLAGS_MINSIZEREL",
@@ -239,7 +191,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : "-Os -DNDEBUG"
+			"value" : "/MD /O1 /Ob1 /DNDEBUG"
 		},
 		{
 			"name" : "CMAKE_CXX_FLAGS_RELEASE",
@@ -255,7 +207,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : "-O3 -DNDEBUG"
+			"value" : "/MD /O2 /Ob2 /DNDEBUG"
 		},
 		{
 			"name" : "CMAKE_CXX_FLAGS_RELWITHDEBINFO",
@@ -271,7 +223,23 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : "-O2 -g -DNDEBUG"
+			"value" : "/MD /Zi /O2 /Ob1 /DNDEBUG"
+		},
+		{
+			"name" : "CMAKE_CXX_STANDARD_LIBRARIES",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "Libraries linked by default with all C++ applications."
+				}
+			],
+			"type" : "STRING",
+			"value" : "kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib"
 		},
 		{
 			"name" : "CMAKE_C_COMPILER",
@@ -287,7 +255,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/bin/x86_64-linux-gnu-gcc-9"
+			"value" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/Llvm/bin/clang-cl.exe"
 		},
 		{
 			"name" : "CMAKE_C_COMPILER_AR",
@@ -299,11 +267,11 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "A wrapper around 'ar' adding the appropriate '--plugin' option for the GCC compiler"
+					"value" : "LLVM archiver"
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/bin/gcc-ar-9"
+			"value" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/Llvm/bin/llvm-ar.exe"
 		},
 		{
 			"name" : "CMAKE_C_COMPILER_RANLIB",
@@ -315,11 +283,11 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "A wrapper around 'ranlib' adding the appropriate '--plugin' option for the GCC compiler"
+					"value" : "Generate index for LLVM archive"
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/bin/gcc-ranlib-9"
+			"value" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/Llvm/bin/llvm-ranlib.exe"
 		},
 		{
 			"name" : "CMAKE_C_FLAGS",
@@ -335,7 +303,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : ""
+			"value" : "/DWIN32 /D_WINDOWS /W3"
 		},
 		{
 			"name" : "CMAKE_C_FLAGS_DEBUG",
@@ -351,7 +319,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : "-g"
+			"value" : "/MDd /Zi /Ob0 /Od /RTC1"
 		},
 		{
 			"name" : "CMAKE_C_FLAGS_MINSIZEREL",
@@ -367,7 +335,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : "-Os -DNDEBUG"
+			"value" : "/MD /O1 /Ob1 /DNDEBUG"
 		},
 		{
 			"name" : "CMAKE_C_FLAGS_RELEASE",
@@ -383,7 +351,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : "-O3 -DNDEBUG"
+			"value" : "/MD /O2 /Ob2 /DNDEBUG"
 		},
 		{
 			"name" : "CMAKE_C_FLAGS_RELWITHDEBINFO",
@@ -399,10 +367,10 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : "-O2 -g -DNDEBUG"
+			"value" : "/MD /Zi /O2 /Ob1 /DNDEBUG"
 		},
 		{
-			"name" : "CMAKE_DLLTOOL",
+			"name" : "CMAKE_C_STANDARD_LIBRARIES",
 			"properties" : 
 			[
 				{
@@ -411,11 +379,11 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "Path to a program."
+					"value" : "Libraries linked by default with all C applications."
 				}
 			],
-			"type" : "FILEPATH",
-			"value" : "CMAKE_DLLTOOL-NOTFOUND"
+			"type" : "STRING",
+			"value" : "kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib"
 		},
 		{
 			"name" : "CMAKE_EXECUTABLE_FORMAT",
@@ -427,7 +395,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "ELF"
+			"value" : "Unknown"
 		},
 		{
 			"name" : "CMAKE_EXE_LINKER_FLAGS",
@@ -443,7 +411,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : ""
+			"value" : "/machine:X86"
 		},
 		{
 			"name" : "CMAKE_EXE_LINKER_FLAGS_DEBUG",
@@ -459,7 +427,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : ""
+			"value" : "/debug /INCREMENTAL"
 		},
 		{
 			"name" : "CMAKE_EXE_LINKER_FLAGS_MINSIZEREL",
@@ -475,7 +443,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : ""
+			"value" : "/INCREMENTAL:NO"
 		},
 		{
 			"name" : "CMAKE_EXE_LINKER_FLAGS_RELEASE",
@@ -491,7 +459,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : ""
+			"value" : "/INCREMENTAL:NO"
 		},
 		{
 			"name" : "CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO",
@@ -507,7 +475,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : ""
+			"value" : "/debug /INCREMENTAL"
 		},
 		{
 			"name" : "CMAKE_EXPORT_COMPILE_COMMANDS",
@@ -547,7 +515,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "Unix Makefiles"
+			"value" : "Ninja"
 		},
 		{
 			"name" : "CMAKE_GENERATOR_INSTANCE",
@@ -595,7 +563,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/jacob/Documents/SDU/8. Semester/AI/LUDO/Ludo-help-for-tools-of-AI-master"
+			"value" : "C:/Users/Jacob/Documents/LUDO-2022/Ludo-help-for-tools-of-AI-master"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -607,19 +575,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "/usr/local"
-		},
-		{
-			"name" : "CMAKE_INSTALL_SO_NO_EXE",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Install .so files without execute permission."
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "1"
+			"value" : "C:/Program Files (x86)/Domain-Code"
 		},
 		{
 			"name" : "CMAKE_LINKER",
@@ -635,7 +591,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/bin/ld"
+			"value" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/Llvm/bin/lld-link.exe"
 		},
 		{
 			"name" : "CMAKE_MAKE_PROGRAM",
@@ -647,11 +603,11 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "Path to a program."
+					"value" : "make program"
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/make"
+			"value" : "C:/PROGRA~2/MICROS~2/2019/COMMUN~1/Common7/IDE/COMMON~1/MICROS~1/CMake/Ninja/ninja.exe"
 		},
 		{
 			"name" : "CMAKE_MODULE_LINKER_FLAGS",
@@ -667,7 +623,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : ""
+			"value" : "/machine:X86"
 		},
 		{
 			"name" : "CMAKE_MODULE_LINKER_FLAGS_DEBUG",
@@ -683,7 +639,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : ""
+			"value" : "/debug /INCREMENTAL"
 		},
 		{
 			"name" : "CMAKE_MODULE_LINKER_FLAGS_MINSIZEREL",
@@ -699,7 +655,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : ""
+			"value" : "/INCREMENTAL:NO"
 		},
 		{
 			"name" : "CMAKE_MODULE_LINKER_FLAGS_RELEASE",
@@ -715,7 +671,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : ""
+			"value" : "/INCREMENTAL:NO"
 		},
 		{
 			"name" : "CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO",
@@ -731,10 +687,10 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : ""
+			"value" : "/debug /INCREMENTAL"
 		},
 		{
-			"name" : "CMAKE_NM",
+			"name" : "CMAKE_MT",
 			"properties" : 
 			[
 				{
@@ -747,7 +703,19 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/bin/nm"
+			"value" : "C:/Program Files (x86)/Windows Kits/10/bin/10.0.18362.0/x86/mt.exe"
+		},
+		{
+			"name" : "CMAKE_NM",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a program."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/Llvm/bin/llvm-nm.exe"
 		},
 		{
 			"name" : "CMAKE_NUMBER_OF_MAKEFILES",
@@ -760,38 +728,6 @@
 			],
 			"type" : "INTERNAL",
 			"value" : "1"
-		},
-		{
-			"name" : "CMAKE_OBJCOPY",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Path to a program."
-				}
-			],
-			"type" : "FILEPATH",
-			"value" : "/bin/objcopy"
-		},
-		{
-			"name" : "CMAKE_OBJDUMP",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Path to a program."
-				}
-			],
-			"type" : "FILEPATH",
-			"value" : "/bin/objdump"
 		},
 		{
 			"name" : "CMAKE_PLATFORM_INFO_INITIALIZED",
@@ -842,7 +778,7 @@
 			"value" : "Domain-Code"
 		},
 		{
-			"name" : "CMAKE_RANLIB",
+			"name" : "CMAKE_RC_COMPILER",
 			"properties" : 
 			[
 				{
@@ -851,14 +787,26 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "Path to a program."
+					"value" : "RC compiler"
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/bin/ranlib"
+			"value" : "C:/Program Files (x86)/Windows Kits/10/bin/10.0.18362.0/x86/rc.exe"
 		},
 		{
-			"name" : "CMAKE_READELF",
+			"name" : "CMAKE_RC_COMPILER_WORKS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "1"
+		},
+		{
+			"name" : "CMAKE_RC_FLAGS",
 			"properties" : 
 			[
 				{
@@ -867,11 +815,75 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "Path to a program."
+					"value" : "Flags for Windows Resource Compiler during all build types."
 				}
 			],
-			"type" : "FILEPATH",
-			"value" : "/bin/readelf"
+			"type" : "STRING",
+			"value" : "-DWIN32"
+		},
+		{
+			"name" : "CMAKE_RC_FLAGS_DEBUG",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "Flags for Windows Resource Compiler during DEBUG builds."
+				}
+			],
+			"type" : "STRING",
+			"value" : "-D_DEBUG"
+		},
+		{
+			"name" : "CMAKE_RC_FLAGS_MINSIZEREL",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "Flags for Windows Resource Compiler during MINSIZEREL builds."
+				}
+			],
+			"type" : "STRING",
+			"value" : ""
+		},
+		{
+			"name" : "CMAKE_RC_FLAGS_RELEASE",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "Flags for Windows Resource Compiler during RELEASE builds."
+				}
+			],
+			"type" : "STRING",
+			"value" : ""
+		},
+		{
+			"name" : "CMAKE_RC_FLAGS_RELWITHDEBINFO",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "Flags for Windows Resource Compiler during RELWITHDEBINFO builds."
+				}
+			],
+			"type" : "STRING",
+			"value" : ""
 		},
 		{
 			"name" : "CMAKE_ROOT",
@@ -883,7 +895,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/usr/share/cmake-3.16"
+			"value" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.17"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS",
@@ -899,7 +911,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : ""
+			"value" : "/machine:X86"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS_DEBUG",
@@ -915,7 +927,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : ""
+			"value" : "/debug /INCREMENTAL"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS_MINSIZEREL",
@@ -931,7 +943,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : ""
+			"value" : "/INCREMENTAL:NO"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS_RELEASE",
@@ -947,7 +959,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : ""
+			"value" : "/INCREMENTAL:NO"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS_RELWITHDEBINFO",
@@ -963,7 +975,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : ""
+			"value" : "/debug /INCREMENTAL"
 		},
 		{
 			"name" : "CMAKE_SKIP_INSTALL_RPATH",
@@ -1011,7 +1023,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : ""
+			"value" : "/machine:X86"
 		},
 		{
 			"name" : "CMAKE_STATIC_LINKER_FLAGS_DEBUG",
@@ -1078,34 +1090,6 @@
 			"value" : ""
 		},
 		{
-			"name" : "CMAKE_STRIP",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Path to a program."
-				}
-			],
-			"type" : "FILEPATH",
-			"value" : "/bin/strip"
-		},
-		{
-			"name" : "CMAKE_UNAME",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "uname command"
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "/usr/bin/uname"
-		},
-		{
 			"name" : "CMAKE_VERBOSE_MAKEFILE",
 			"properties" : 
 			[
@@ -1131,7 +1115,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/jacob/Documents/SDU/8. Semester/AI/LUDO/build"
+			"value" : "C:/Users/Jacob/Documents/LUDO-2022/build"
 		},
 		{
 			"name" : "Domain-Code_SOURCE_DIR",
@@ -1143,7 +1127,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/jacob/Documents/SDU/8. Semester/AI/LUDO/Ludo-help-for-tools-of-AI-master"
+			"value" : "C:/Users/Jacob/Documents/LUDO-2022/Ludo-help-for-tools-of-AI-master"
 		}
 	],
 	"kind" : "cache",

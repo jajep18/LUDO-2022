@@ -1,5 +1,5 @@
 #include "iplayer.h"
-#include "../AI_player/q_table.h"
+#include "my_q_table.h"
 #include "positions_and_dice.h"
 
 #include "random"
@@ -23,17 +23,15 @@ private:
     bool learning_on = true;
     int pieces_in_goal = 0;
 
-
-
     std::mt19937 generator;
     std::uniform_int_distribution<int> distribution;
 
     positions move_to_start(int piece, positions positions);
 
     // Helper functions
-    int is_star_tile(int tile); //Checks if special tile and returns new location
+    int star_tile_move(int tile); //Checks if special tile and returns new location
     bool is_globe_tile(int tile); 
-    void send_pieces_home(int tile); //Sends all pieces on tile home
+    bool send_pieces_home(int tile); //Sends all pieces on tile home
     int opponents_on_pos(int tile);
     
     int get_unprotected_PIP(int n_PIP);
@@ -55,12 +53,28 @@ public:
 
 
 private:
-    positions get_post_move_pos(int piece);
+    int predict_action(int piece);
     int make_decision();
 
-    int get_q_idx();
+    int get_q_idx(std::vector<int> states, int action);
+
+    int calc_opponent_PIP(positions positions, int player);
+
+    int get_lowest(int a, int b, int c);
+    int get_middle(int a, int b, int c);
+
+    int get_cozy_pieces(); 
+    int get_safe_pieces();
+    int get_scared_pieces();
+    int get_goal_pieces();
+    int get_unsafe_pieces();
+
+    bool check_grouping(int tile);
+
+    std::vector<int> get_current_states();//Returns states for all 4 pieces
 
 };
+
 
 
 

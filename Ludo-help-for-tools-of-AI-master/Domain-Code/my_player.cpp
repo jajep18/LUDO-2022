@@ -41,7 +41,7 @@ void my_player::increment_pieces_in_goal(){
     }
 }
 
-int my_player::is_star_tile(int tile)
+int my_player::star_tile_move(int tile)
 {
     switch(tile) // Check for star
     {
@@ -96,21 +96,23 @@ void my_player::set_learning_rate(double value){
     learning_rate = value;
 }
 
-void my_player::send_pieces_home(int tile){
-
+bool my_player::send_pieces_home(int tile){
+    bool kill = false;
     for (int i = 4; i < 16; i++){
-        if (post_move_position[i] == tile)
+        if (post_move_position[i] == tile){
             post_move_position[i] = -1;
-
+            kill = true;
+        }
     }
-
+    return kill;
 }
 
 
-
-positions my_player::get_post_move_pos(int piece_moving){
+int my_player::predict_action(int piece_moving){
 
     positions post_move_pos;
+    
+    int action = -1;
 
     for(int i = 0; i < 16; i++){
         post_move_pos.pos[i] = position[i];
@@ -120,42 +122,64 @@ positions my_player::get_post_move_pos(int piece_moving){
 
     if( piece_pos == -1){
        post_move_pos = move_to_start(piece_moving,post_move_pos); // Move piece to start if possible
+       action = Spawn;
     }
 
     else{
         int next_pos = piece_pos + dice;
-        next_pos += is_star_tile(next_pos);
+        next_pos += star_tile_move(next_pos);
 
-        if(next_pos == 56)
+        if(next_pos == 56){
             post_move_pos.pos[piece_moving] = 99;
-        else if(next_pos > 50 && next_pos < 56)
+            action = Go_goal;
+            increment_pieces_in_goal();
+        }
+        else if(next_pos > 50 && next_pos < 56){
             post_move_pos.pos[piece_moving] = next_pos;
-        else if(next_pos > 55)
+            action = Go_goal_zone;
+        }
+        else if(next_pos > 55){
             post_move_pos.pos[piece_moving] = 112 - next_pos;
+            action = Bounce;
+        }
         else if (next_pos > 0 && next_pos < 51)
         {
             int opponents = opponents_on_pos(next_pos);
 
-            if(opponents == 0)
+            if(opponents == 0){
                 post_move_pos.pos[piece_moving] = next_pos;
+                action = Normal_move;
+                if (star_tile_move(next_pos) > 0)
+                    action = Go_star;
+                if (is_globe_tile(next_pos))
+                    action = Go_globe;
+                if(check_grouping(next_pos))
+                    action = Group_up;
+            }
             else if(opponents == 1)
             {
-                if(is_globe_tile(next_pos))
+                if(is_globe_tile(next_pos)){
                     post_move_pos.pos[piece_moving] = -1;
+                    action = Suicide;
+                }
                 else
                 {
                     post_move_pos.pos[piece_moving] = next_pos;
-                    send_pieces_home(next_pos);
+                    if(send_pieces_home(next_pos) == true){
+                        action = Kill;
+                    }
                 }
             }
-            else
+            else{
                 post_move_pos.pos[piece_moving] = -1;
+                action = Suicide;
+            }
         }
         else
             throw std::exception();   
     }
-
-    return post_move_pos;
+    
+    return action;
 
 }
 
@@ -187,13 +211,15 @@ int my_player::make_decision()
     double best_val = -1;
     int best_val_count = 0;
     int best_moves[4];
-    positions best_pos;
+    int action = -1;
+    std::vector<int> states = get_current_states();
 
     for (int i = 0; i < available_count; i++)
     {
         int piece_current = available_moves[i];
-        best_pos = get_post_move_pos(piece_current); 
-        double q_val = q_table->get_value(get_q_idx()); 
+        action = predict_action(piece_current); 
+       
+        double q_val = q_table->get_q_table_value(states, action); 
 
         if (q_val > best_val){
             best_val = q_val;
@@ -205,68 +231,132 @@ int my_player::make_decision()
             best_val_count++;
         }
     }
+    int next_action = predict_action(best_moves[0]);
+    q_table->update_q_table(states, action, post_move_position);
 
     // Move according to best available move
-    if(available_count == 1) return best_moves[0];
+    if(best_val_count == 1) return best_moves[0];
 
     // Something went wrong
-    if(available_count < 1) throw std::exception();
+    if(best_val_count < 1) throw std::exception();
 
-    // Move accordingly randowmly selected best move
+    // Move from randomly selected best moves
     distribution = std::uniform_int_distribution<int>(0, best_val_count - 1);
     return best_moves[distribution(generator)];
 }
 
-int my_player::get_q_idx(){
 
-    //Q-table index variables 
-    // Used to check own pieces //
-    int in_goal_score               = 0;
-    int safe_score                  = 0; // Pieces safe from enemys   
-    int in_danger_score             = 0; //6 or less pieces in front of an enemy
-    int within_goal_range_score     = 0; //Number of pieces able to get to the goal
-    int unproctected__score         = 0; //Number of pieces not on a globe
-    // Used to check if ahead or behind opponents //
-    int best_opponet_score          = 0; //Score of best opponent 
-    int second_opponet_score        = 0; //Score of 2nd best opponent   
-
-    //Check if you already won
-    if(pieces_in_goal == 4){
-        return Q_Table::WON_STATE;
-    }
-    // PIP = Pieces In Play
-    int n_PIP = 4 - pieces_in_goal;
-    int PIP_unprotected = get_unprotected_PIP(n_PIP);
-
-    int opponent_1_PIP = calc_opponent_PIP(1);
-    int opponent_2_PIP = calc_opponent_PIP(2);
-    int opponent_3_PIP = calc_opponent_PIP(3);
-    int best_opponent = get_lowest(opponent_1_PIP, opponent_2_PIP, opponent_3_PIP);
-    int second_opponent = get_middle(opponent_1_PIP, opponent_2_PIP, opponent_3_PIP);
-    int pip_diff = second_opponent - best_opponent;
-    int diff_divider = 7;
-    
-    //Assigning the Q-table scores
-    in_goal_score = pieces_in_goal;
-
-
-
-}
-
-int my_player::get_unprotected_PIP(int n_PIP){
+int my_player::get_cozy_pieces(){
 
     int total = 0;
-
     for(int i = 0; i < 4; i++)
     {
-        int square = post_move_position[i];
-        if(is_globe_tile(square) == false)
+        int tile = position[i];
+        if(tile == -1)
             total++;
     }
+    return total;
+    
+}
+int my_player::get_safe_pieces(){
 
+    int total = 0;
+    for(int i = 0; i < 4; i++)
+    {
+        int tile = position[i];
+        if((is_globe_tile(tile) == true) || (tile > 50 && tile < 56))
+            total++;
+    }
+    
     return total;
 
 }
+int my_player::get_scared_pieces(){ 
+
+    int total = 0;
+    for (int player = 0; player < 4; player++) // Go through all pieces
+    {   
+        bool danger = false;
+        int tile = position[player];
+        if((tile != 99 || tile != -1 ) && (tile <= 50) && (is_globe_tile(tile) == false)){
+            for (int enemy = 4; enemy < 16; enemy++)// Check if enemy behind 6 of piece
+            {
+                int difference = position[player] - position[enemy];
+                if (difference <= 6 && difference >= 1)  // if true count++
+                {
+                danger = true;
+                }
+
+            }
+            if(danger)    
+                total++;
+        }
+    }
+    return total;    
+}
+
+int my_player::get_goal_pieces(){
+    int total = 0;
+    for(int i = 0; i < 4; i++)
+    {
+        int tile = position[i];
+        if(tile == 99)
+            total++;
+    }
+    return total;
+}
+
+int my_player::get_unsafe_pieces(){ 
+
+    int total = 0;
+    for(int i = 0; i < 4; i++)
+    {
+        int tile = position[i];
+
+        if((tile != 99 || tile != -1 ) && (tile <= 50)){
+            if(is_globe_tile(tile) == false){
+                total++;
+            }
+        }
+    }
+    return total;
+}
 
 
+bool my_player::check_grouping(int tile){
+    bool grouping = false;
+    
+    for (int i = 0; i < 3; i++)
+    {
+        if(position[i] == tile)
+            grouping = 1;
+    }
+    return grouping;
+}
 
+
+std::vector<int> my_player::get_current_states(){
+    // "Home", "Safe", "Unprotected", "Danger", "Goal"
+    std::vector<int> states;
+    int count_home      = get_cozy_pieces(); // Cozy beacuse it's at home
+    int count_safe      = get_safe_pieces();
+    int count_danger    = get_scared_pieces(); // scared because in danger
+    int count_unsafe    = get_unsafe_pieces() - count_danger;
+    int count_goal      = get_goal_pieces();
+
+    if( (count_home + count_safe + count_danger + count_unsafe + count_goal) != 4 ) 
+        throw std::exception("Count of pieces != 4");
+
+    for (int i = 0; i < count_home; i++)
+        states.push_back(Home);
+    for (int i = 0; i < count_safe; i++)
+        states.push_back(Safe);
+    for (int i = 0; i < count_safe; i++)
+        states.push_back(Safe);
+    for (int i = 0; i < count_danger; i++)
+        states.push_back(Danger);
+    for (int i = 0; i < count_goal; i++)
+        states.push_back(Goal);
+
+    return states;
+}
