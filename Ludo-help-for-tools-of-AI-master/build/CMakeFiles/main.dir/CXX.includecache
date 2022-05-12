@@ -1,0 +1,64 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/jacob/Documents/SDU/8. Semester/AI/LUDO/Ludo-help-for-tools-of-AI-master/Domain-Code/dice.h
+random
+/home/jacob/Documents/SDU/8. Semester/AI/LUDO/Ludo-help-for-tools-of-AI-master/Domain-Code/random
+
+/home/jacob/Documents/SDU/8. Semester/AI/LUDO/Ludo-help-for-tools-of-AI-master/Domain-Code/game.cpp
+game.h
+/home/jacob/Documents/SDU/8. Semester/AI/LUDO/Ludo-help-for-tools-of-AI-master/Domain-Code/game.h
+
+/home/jacob/Documents/SDU/8. Semester/AI/LUDO/Ludo-help-for-tools-of-AI-master/Domain-Code/game.h
+random
+/home/jacob/Documents/SDU/8. Semester/AI/LUDO/Ludo-help-for-tools-of-AI-master/Domain-Code/random
+iostream
+-
+dice.h
+/home/jacob/Documents/SDU/8. Semester/AI/LUDO/Ludo-help-for-tools-of-AI-master/Domain-Code/dice.h
+iplayer.h
+/home/jacob/Documents/SDU/8. Semester/AI/LUDO/Ludo-help-for-tools-of-AI-master/Domain-Code/iplayer.h
+positions_and_dice.h
+/home/jacob/Documents/SDU/8. Semester/AI/LUDO/Ludo-help-for-tools-of-AI-master/Domain-Code/positions_and_dice.h
+
+/home/jacob/Documents/SDU/8. Semester/AI/LUDO/Ludo-help-for-tools-of-AI-master/Domain-Code/iplayer.h
+iostream
+-
+positions_and_dice.h
+/home/jacob/Documents/SDU/8. Semester/AI/LUDO/Ludo-help-for-tools-of-AI-master/Domain-Code/positions_and_dice.h
+
+/home/jacob/Documents/SDU/8. Semester/AI/LUDO/Ludo-help-for-tools-of-AI-master/Domain-Code/main.cpp
+iostream
+-
+game.h
+/home/jacob/Documents/SDU/8. Semester/AI/LUDO/Ludo-help-for-tools-of-AI-master/Domain-Code/game.h
+test_game.h
+/home/jacob/Documents/SDU/8. Semester/AI/LUDO/Ludo-help-for-tools-of-AI-master/Domain-Code/test_game.h
+iplayer.h
+/home/jacob/Documents/SDU/8. Semester/AI/LUDO/Ludo-help-for-tools-of-AI-master/Domain-Code/iplayer.h
+player_random.h
+/home/jacob/Documents/SDU/8. Semester/AI/LUDO/Ludo-help-for-tools-of-AI-master/Domain-Code/player_random.h
+
+/home/jacob/Documents/SDU/8. Semester/AI/LUDO/Ludo-help-for-tools-of-AI-master/Domain-Code/player_random.h
+random
+/home/jacob/Documents/SDU/8. Semester/AI/LUDO/Ludo-help-for-tools-of-AI-master/Domain-Code/random
+iplayer.h
+/home/jacob/Documents/SDU/8. Semester/AI/LUDO/Ludo-help-for-tools-of-AI-master/Domain-Code/iplayer.h
+
+/home/jacob/Documents/SDU/8. Semester/AI/LUDO/Ludo-help-for-tools-of-AI-master/Domain-Code/positions_and_dice.h
+
+/home/jacob/Documents/SDU/8. Semester/AI/LUDO/Ludo-help-for-tools-of-AI-master/Domain-Code/test_game.cpp
+test_game.h
+/home/jacob/Documents/SDU/8. Semester/AI/LUDO/Ludo-help-for-tools-of-AI-master/Domain-Code/test_game.h
+
+/home/jacob/Documents/SDU/8. Semester/AI/LUDO/Ludo-help-for-tools-of-AI-master/Domain-Code/test_game.h
+game.h
+/home/jacob/Documents/SDU/8. Semester/AI/LUDO/Ludo-help-for-tools-of-AI-master/Domain-Code/game.h
+string
+-
+

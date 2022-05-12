@@ -1,0 +1,3 @@
+/home/jacob/Documents/SDU/8. Semester/AI/LUDO/Ludo-help-for-tools-of-AI-master/build/CMakeFiles/rebuild_cache.dir
+/home/jacob/Documents/SDU/8. Semester/AI/LUDO/Ludo-help-for-tools-of-AI-master/build/CMakeFiles/edit_cache.dir
+/home/jacob/Documents/SDU/8. Semester/AI/LUDO/Ludo-help-for-tools-of-AI-master/build/CMakeFiles/main.dir
