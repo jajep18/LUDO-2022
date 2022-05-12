@@ -4,11 +4,11 @@
 
 #include "random"
 
-    struct positions{
+struct positions{
 
-        int pos[16];
-        positions() {}
-    };
+    int pos[16];
+    positions() {}
+};
 
 class my_player : public iplayer
 {
@@ -36,6 +36,8 @@ private:
     void send_pieces_home(int tile); //Sends all pieces on tile home
     int opponents_on_pos(int tile);
     
+    int get_unprotected_PIP(int n_PIP);
+    int get_opponent_PIP(int opponent);
 
     // Q-learning
    // int get_q_idx();
@@ -46,6 +48,8 @@ public:
     my_player(Q_Table& table);
     my_player(Q_Table q_table, double learning_rate = 0.10);
     ~my_player();
+
+    void increment_pieces_in_goal();
     
     void set_learning_rate(double value);
 
@@ -53,6 +57,8 @@ public:
 private:
     positions get_post_move_pos(int piece);
     int make_decision();
+
+    int get_q_idx();
 
 };
 
