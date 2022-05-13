@@ -7,8 +7,7 @@
 #include <exception>
 #include <iostream>
 #include <fstream>
-
-#include "my_player.h"
+#include <random>
 
 enum actions {Spawn,  Normal_move, Go_goal, Go_goal_zone, Go_star, Go_globe, Group_up, Kill, Suicide, Bounce, Last};
 enum states { Home = 0, Safe = 1, Unprotected = 2, Danger = 3, Goal = 4 };

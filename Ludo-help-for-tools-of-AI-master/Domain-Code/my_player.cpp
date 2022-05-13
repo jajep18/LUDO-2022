@@ -8,17 +8,18 @@
 //         positions() {}
 //     };
 
-my_player::my_player(Q_Table q_table_, double learning_rate = 0.10){
+my_player::my_player(Q_Table q_table_, double alpha = 0.10){
 
     // Assign Q-table
     q_table = &q_table_;
-    set_learning_rate(learning_rate);
+    set_learning_rate(alpha);
 
     // Assign random generator
     std::random_device rd;
     generator = std::mt19937(rd());
 
 }
+
 
 
 my_player::~my_player(){  }
@@ -249,12 +250,12 @@ int my_player::make_decision()
 }
 
 
-int my_player::get_cozy_pieces(int* position){
+int my_player::get_cozy_pieces(int* position_){
 
     int total = 0;
     for(int i = 0; i < 4; i++)
     {
-        int tile = position[i];
+        int tile = position_[i];
         if(tile == -1)
             total++;
     }
@@ -316,7 +317,7 @@ int my_player::get_unsafe_pieces(int* position){
     {
         int tile = position[i];
 
-        if((tile != 99 || tile != -1 ) && (tile <= 50)){
+        if((tile != 99 && tile != -1 ) && (tile <= 50)){
             if(is_globe_tile(tile) == false){
                 total++;
             }
@@ -346,6 +347,9 @@ std::vector<int> my_player::get_states(int* position){
     int count_danger    = get_scared_pieces(position); // scared because in danger
     int count_unsafe    = get_unsafe_pieces(position) - count_danger;
     int count_goal      = get_goal_pieces(position);
+
+    std::cout << "Home Count " <<count_home  << " Safe Count "  << count_safe  << " Danger Count " << count_danger 
+    << " Unsafe count " << count_unsafe << " Goal count " << count_goal << std::endl; 
 
     if( (count_home + count_safe + count_danger + count_unsafe + count_goal) != 4 ) 
         throw std::exception("Count of pieces != 4");

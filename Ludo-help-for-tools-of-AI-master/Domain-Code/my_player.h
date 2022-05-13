@@ -1,14 +1,11 @@
+#ifndef MY_PLAYER_H
+#define MY_PLAYER_H
+
 #include "iplayer.h"
 #include "my_q_table.h"
 #include "positions_and_dice.h"
 
 #include "random"
-
-struct positions{
-
-    int pos[16];
-    positions() {}
-};
 
 class my_player : public iplayer
 {
@@ -45,7 +42,7 @@ private:
 public:
 
     my_player(Q_Table& table);
-    my_player(Q_Table q_table, double learning_rate = 0.10);
+    my_player(Q_Table q_table, double alpha);
     ~my_player();
 
     void increment_pieces_in_goal();
@@ -62,7 +59,7 @@ private:
 
     int get_q_idx(std::vector<int> states, int action);
 
-    int calc_opponent_PIP(positions positions, int player);
+
 
     int get_lowest(int a, int b, int c);
     int get_middle(int a, int b, int c);
@@ -82,3 +79,4 @@ private:
 
 
 
+#endif

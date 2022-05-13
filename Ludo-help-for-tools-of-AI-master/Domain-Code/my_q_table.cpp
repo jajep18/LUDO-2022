@@ -1,6 +1,8 @@
 #include "my_q_table.h"
 
-Q_Table::Q_Table(){}
+Q_Table::Q_Table(){
+    std::cout << "Q-Table ready\n"<< std::endl;
+}
 Q_Table::~Q_Table(){}
 
 

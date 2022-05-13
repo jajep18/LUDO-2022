@@ -1,0 +1,20 @@
+# ninja log v5
+1	742	674134262	CMakeFiles/main.dir/Domain-Code/game.cpp.obj	a0be55e0d9f425b3
+44	761	674134262	CMakeFiles/main.dir/Domain-Code/test_game.cpp.obj	dee8a607a54b032f
+1	540	674134741	CMakeFiles/main.dir/Domain-Code/main.cpp.obj	ab5035e5794322fb
+7	471	674135097	CMakeFiles/main.dir/Domain-Code/main.cpp.obj	ab5035e5794322fb
+1	516	674135097	CMakeFiles/main.dir/Domain-Code/my_q_table.cpp.obj	de272cd5b438018
+0	461	674135196	CMakeFiles/main.dir/Domain-Code/main.cpp.obj	ab5035e5794322fb
+4	483	674135196	CMakeFiles/main.dir/Domain-Code/my_player.cpp.obj	46164f76cb40995e
+483	808	674135196	main.exe	f84fd018b4290491
+0	508	674135314	CMakeFiles/main.dir/Domain-Code/main.cpp.obj	ab5035e5794322fb
+0	490	674135432	CMakeFiles/main.dir/Domain-Code/main.cpp.obj	ab5035e5794322fb
+490	600	674135432	main.exe	f84fd018b4290491
+0	483	674135548	CMakeFiles/main.dir/Domain-Code/my_q_table.cpp.obj	de272cd5b438018
+483	593	674135548	main.exe	f84fd018b4290491
+1	488	674135703	CMakeFiles/main.dir/Domain-Code/my_player.cpp.obj	46164f76cb40995e
+1	110	674135710	main.exe	f84fd018b4290491
+0	479	674135838	CMakeFiles/main.dir/Domain-Code/my_player.cpp.obj	46164f76cb40995e
+479	586	674135838	main.exe	f84fd018b4290491
+1	484	674135927	CMakeFiles/main.dir/Domain-Code/my_player.cpp.obj	46164f76cb40995e
+485	597	674135928	main.exe	f84fd018b4290491

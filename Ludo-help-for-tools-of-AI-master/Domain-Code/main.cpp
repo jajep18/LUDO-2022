@@ -12,15 +12,15 @@ int main()
     //Run the unit tests
     test_game tester;
     tester.run_all_tests();
-
+    Q_Table q_table;
     //Create players
-    player_random player_0;
+    my_player CreamBot(q_table,0.1);
     player_random player_1;
     player_random player_2;
     player_random player_3;
 
     //Play a game of Ludo
-    game g(&player_0, &player_1, &player_2, &player_3);
+    game g(&CreamBot, &player_1, &player_2, &player_3);
     g.play_game();
     cout << "Player " << g.get_winner() << " won the game!" << endl << endl;
 
