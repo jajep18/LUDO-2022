@@ -19,6 +19,12 @@
 
 {
   "directory": "C:/Users/Jacob/Documents/LUDO-2022/build",
+  "command": "C:\\PROGRA~2\\MICROS~2\\2019\\COMMUN~1\\VC\\Tools\\Llvm\\bin\\clang-cl.exe  /nologo -TP   /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1   /FoCMakeFiles\\main.dir\\Domain-Code\\my_q_table.cpp.obj /FdTARGET_COMPILE_PDB -c C:\\Users\\Jacob\\Documents\\LUDO-2022\\Ludo-help-for-tools-of-AI-master\\Domain-Code\\my_q_table.cpp",
+  "file": "C:\\Users\\Jacob\\Documents\\LUDO-2022\\Ludo-help-for-tools-of-AI-master\\Domain-Code\\my_q_table.cpp"
+},
+
+{
+  "directory": "C:/Users/Jacob/Documents/LUDO-2022/build",
   "command": "C:\\PROGRA~2\\MICROS~2\\2019\\COMMUN~1\\VC\\Tools\\Llvm\\bin\\clang-cl.exe  /nologo -TP   /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1   /FoCMakeFiles\\main.dir\\Domain-Code\\test_game.cpp.obj /FdTARGET_COMPILE_PDB -c C:\\Users\\Jacob\\Documents\\LUDO-2022\\Ludo-help-for-tools-of-AI-master\\Domain-Code\\test_game.cpp",
   "file": "C:\\Users\\Jacob\\Documents\\LUDO-2022\\Ludo-help-for-tools-of-AI-master\\Domain-Code\\test_game.cpp"
 }

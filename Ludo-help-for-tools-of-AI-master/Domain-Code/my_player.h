@@ -12,13 +12,14 @@ struct positions{
 
 class my_player : public iplayer
 {
-private:
+private: 
     int my_players_privates;
 
     Q_Table* q_table;
-    int post_move_position[16];
+    int* predicted_move_position[16];
 
     double learning_rate = 0.10;
+    double discount_factor = 0.80;
     int move_count = 0;
     bool learning_on = true;
     int pieces_in_goal = 0;
@@ -26,7 +27,7 @@ private:
     std::mt19937 generator;
     std::uniform_int_distribution<int> distribution;
 
-    positions move_to_start(int piece, positions positions);
+    int* move_to_start(int piece, int* positions);
 
     // Helper functions
     int star_tile_move(int tile); //Checks if special tile and returns new location
@@ -51,6 +52,9 @@ public:
     
     void set_learning_rate(double value);
 
+    double get_learning_rate();
+    double get_discount_factor();
+
 
 private:
     int predict_action(int piece);
@@ -63,15 +67,15 @@ private:
     int get_lowest(int a, int b, int c);
     int get_middle(int a, int b, int c);
 
-    int get_cozy_pieces(); 
-    int get_safe_pieces();
-    int get_scared_pieces();
-    int get_goal_pieces();
-    int get_unsafe_pieces();
+    int get_cozy_pieces(int* positions); 
+    int get_safe_pieces(int* positions);
+    int get_scared_pieces(int* positions);
+    int get_goal_pieces(int* positions);
+    int get_unsafe_pieces(int* positions);
 
     bool check_grouping(int tile);
 
-    std::vector<int> get_current_states();//Returns states for all 4 pieces
+    std::vector<int> get_states(int* position);//Returns states for all 4 pieces for the given positions
 
 };
 

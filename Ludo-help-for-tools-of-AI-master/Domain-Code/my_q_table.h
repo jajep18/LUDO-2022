@@ -8,7 +8,9 @@
 #include <iostream>
 #include <fstream>
 
-enum actions {Spawn,  Normal_move, Go_goal, Go_goal_zone, Go_star, Go_globe, Group_up, Kill, Suicide, Bounce};
+#include "my_player.h"
+
+enum actions {Spawn,  Normal_move, Go_goal, Go_goal_zone, Go_star, Go_globe, Group_up, Kill, Suicide, Bounce, Last};
 enum states { Home = 0, Safe = 1, Unprotected = 2, Danger = 3, Goal = 4 };
 class Q_Table{
 public:
@@ -17,7 +19,10 @@ public:
     ~Q_Table();
     double get_q_table_value(std::vector<int> states, int action); 
 
-    void update_q_table(std::vector<int> state, int action, int next_state);
+    void update_q_table(std::vector<int> states, int action, std::vector<int> next_states, double alpha, double gamma);
+
+    double get_reward(int action);
+    int get_best_action(std::vector<int> next_state);
   
 
 private:
@@ -42,6 +47,9 @@ private:
         // Nothing 
         // States: Number of states chosen using n-choose-K  For report: https://www.probabilitycourse.com/chapter2/2_1_4_unordered_with_replacement.php
 
+
+    std::mt19937 generator;
+    std::uniform_int_distribution<int> distribution;
 
 };
 
