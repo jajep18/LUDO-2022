@@ -81,6 +81,7 @@ void game::next_turn()
     update_relative_position();
 
     int rel_piece = players[color]->make_decision(rel_pos_and_dice);
+
     move_piece(rel_piece);
 }
 

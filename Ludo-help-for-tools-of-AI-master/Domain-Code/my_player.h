@@ -6,6 +6,8 @@
 #include "positions_and_dice.h"
 
 #include "random"
+#include <cassert>
+#include <vector>
 
 class my_player : public iplayer
 {
@@ -13,18 +15,22 @@ private:
     int my_players_privates;
 
     Q_Table* q_table;
-    int* predicted_move_position[16];
+    //int predicted_move_position[16];
+
+    std::vector<int> predicted_move_position;
 
     double learning_rate = 0.10;
     double discount_factor = 0.80;
     int move_count = 0;
     bool learning_on = true;
     int pieces_in_goal = 0;
+    int death_count = 0;
+    
 
     std::mt19937 generator;
     std::uniform_int_distribution<int> distribution;
 
-    int* move_to_start(int piece, int* positions);
+    std::vector<int> move_to_start(int piece, std::vector<int> positions);
 
     // Helper functions
     int star_tile_move(int tile); //Checks if special tile and returns new location
@@ -41,8 +47,8 @@ private:
 
 public:
 
-    my_player(Q_Table& table);
-    my_player(Q_Table q_table, double alpha);
+    my_player(Q_Table &table);
+    my_player(Q_Table &q_table, double alpha);
     ~my_player();
 
     void increment_pieces_in_goal();
@@ -64,15 +70,19 @@ private:
     int get_lowest(int a, int b, int c);
     int get_middle(int a, int b, int c);
 
-    int get_cozy_pieces(int* positions); 
-    int get_safe_pieces(int* positions);
-    int get_scared_pieces(int* positions);
-    int get_goal_pieces(int* positions);
-    int get_unsafe_pieces(int* positions);
+    int get_cozy_pieces(    std::vector<int> positions); 
+    int get_safe_pieces(    std::vector<int> positions);
+    int get_scared_pieces(  std::vector<int> positions);
+    int get_goal_pieces(    std::vector<int> positions);
+    int get_unsafe_pieces(  std::vector<int> positions);
 
     bool check_grouping(int tile);
 
-    std::vector<int> get_states(int* position);//Returns states for all 4 pieces for the given positions
+    std::vector<int> get_states(std::vector<int> position);//Returns states for all 4 pieces for the given positions
+
+    std::vector<int> get_current_states(int* position);//Returns states for all 4 pieces for the given positions
+
+    
 
 };
 

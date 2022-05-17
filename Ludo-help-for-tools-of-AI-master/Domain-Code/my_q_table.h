@@ -20,18 +20,20 @@ public:
 
     void update_q_table(std::vector<int> states, int action, std::vector<int> next_states, double alpha, double gamma);
 
-    double get_reward(int action);
     int get_best_action(std::vector<int> next_state);
   
 
 private:
 
+    double get_reward(int action);
+
     std::vector<std::string> states_vector  = { "Home", "Safe", "Unprotected", "Danger", "Goal"};
 
-    //enum actions                          {Spawn,  Normal_move, Go_goal, Go_goal_zone, Star, Globe, group_up, Kill, Suicide, Bounce};
-    std::vector<double> reward_vector  =    { 0.4,   0.1,         0.7,     0.5,          0.3,   0.35, 0.35,     0.4   -0.4, -0.2};
+//                                   {Spawn,  Normal_move, Go_goal, Go_goal_zone, Star, Globe, group_up, Kill, Suicide, Bounce};
+    std::vector<double> reward_vector = { 0.4,   0.1,         0.7,     0.5,          0.3,   0.35, 0.35,     0.4,   -0.4, -0.2};
 
-    double q_table[5][5][5][5][10] = {0}; //[Piece1][Piece2][Piece3][Piece4][Actions] 
+    double q_table[5][5][5][5][10]; //[Piece1][Piece2][Piece3][Piece4][Actions] 
+ 
     //Piece contains:  "Home", "Safe", "Unprotected", "Danger", "Goal"
      // Actions: 
         // Spawn
