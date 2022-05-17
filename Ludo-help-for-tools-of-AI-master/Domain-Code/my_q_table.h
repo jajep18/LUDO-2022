@@ -29,7 +29,8 @@ private:
 
     std::vector<std::string> states_vector  = { "Home", "Safe", "Unprotected", "Danger", "Goal"};
 
-//                                   {Spawn,  Normal_move, Go_goal, Go_goal_zone, Star, Globe, group_up, Kill, Suicide, Bounce};
+//                                      {Spawn,  Normal_move, Go_goal, Go_goal_zone, Star, Globe, group_up, Kill, Suicide, Bounce};
+// { 0.4,   0.1,         0.7,     0.5,          0.3,   0.35, 0.35,     0.4,   -0.4, -0.2} 50% wirnate
     std::vector<double> reward_vector = { 0.4,   0.1,         0.7,     0.5,          0.3,   0.35, 0.35,     0.4,   -0.4, -0.2};
 
     double q_table[5][5][5][5][10]; //[Piece1][Piece2][Piece3][Piece4][Actions] 
