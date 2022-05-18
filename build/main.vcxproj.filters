@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\jacob\Documents\LUDO-2022\Ludo-help-for-tools-of-AI-master\Domain-Code\game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\jacob\Documents\LUDO-2022\Ludo-help-for-tools-of-AI-master\Domain-Code\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\jacob\Documents\LUDO-2022\Ludo-help-for-tools-of-AI-master\Domain-Code\my_player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\jacob\Documents\LUDO-2022\Ludo-help-for-tools-of-AI-master\Domain-Code\my_q_table.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\jacob\Documents\LUDO-2022\Ludo-help-for-tools-of-AI-master\Domain-Code\test_game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\jacob\Documents\LUDO-2022\Ludo-help-for-tools-of-AI-master\Domain-Code\dice.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\jacob\Documents\LUDO-2022\Ludo-help-for-tools-of-AI-master\Domain-Code\game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\jacob\Documents\LUDO-2022\Ludo-help-for-tools-of-AI-master\Domain-Code\iplayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\jacob\Documents\LUDO-2022\Ludo-help-for-tools-of-AI-master\Domain-Code\my_player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\jacob\Documents\LUDO-2022\Ludo-help-for-tools-of-AI-master\Domain-Code\my_q_table.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\jacob\Documents\LUDO-2022\Ludo-help-for-tools-of-AI-master\Domain-Code\player_random.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\jacob\Documents\LUDO-2022\Ludo-help-for-tools-of-AI-master\Domain-Code\positions_and_dice.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\jacob\Documents\LUDO-2022\Ludo-help-for-tools-of-AI-master\Domain-Code\test_game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\jacob\Documents\LUDO-2022\Ludo-help-for-tools-of-AI-master\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{6904F1D8-EC60-3A74-94D4-125D383421DD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{7611657D-FD34-3DA7-A38E-8B3BF258AF68}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

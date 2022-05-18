@@ -1,6 +1,6 @@
 #include "my_q_table.h"
 
-Q_Table::Q_Table(){
+Q_Table::Q_Table(bool learning){
 
     for (size_t i = 0; i < 5; i++)
     {
@@ -22,6 +22,7 @@ Q_Table::Q_Table(){
         }
         
     }
+    learn = learning;
     std::cout << "Q-Table ready\n"<< std::endl;
 }
 Q_Table::~Q_Table(){}
@@ -48,8 +49,8 @@ void Q_Table::update_q_table(std::vector<int> states, int action, std::vector<in
     //Q[state, action] = Q[state, action] + lr * (reward + gamma * np.max(Q[new_state, :]) — Q[state, action])
     double updated_val = get_q_table_value(states, action) + alpha * 
     ( get_reward(action) + gamma + get_q_table_value(next_states, get_best_action(next_states)) ) - get_q_table_value(states, action);
-    
-    q_table[states[0]][states[1]][states[2]][states[3]][action] = updated_val;
+    if (learn)
+        q_table[states[0]][states[1]][states[2]][states[3]][action] = updated_val;
     
 }
 

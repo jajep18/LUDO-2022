@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "main.exe"
+			"path" : "Debug/main.exe"
 		},
 		{
-			"path" : "main.pdb"
+			"path" : "Debug/main.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -50,6 +50,12 @@
 				7,
 				11
 			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
 		}
 	],
 	"id" : "main::@6890427a1f51a3e7e1df",

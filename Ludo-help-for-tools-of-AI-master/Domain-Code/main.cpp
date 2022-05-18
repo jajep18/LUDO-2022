@@ -11,11 +11,16 @@ using namespace std;
 
 int main()
 {
+    int batches = 1000;
+    int n_games_per_batches = 100;
+    int wins_overall[] = {0, 0, 0, 0};
+    bool do_learning = true;
+
 
     //Run the unit tests
     test_game tester;
     tester.run_all_tests();
-    Q_Table q_table;
+    Q_Table q_table(do_learning);
     //Create players
     
     my_player CreamBot(q_table, 0.1);
@@ -27,16 +32,12 @@ int main()
     game g(&CreamBot, &player_1, &player_2, &player_3);
     g.play_game();
     cout << "Player " << g.get_winner() << " won the game!" << endl << endl;
-    // Test for batches of games, print winrate for every 50 games to compare learning
-    //Play many games of Ludo
-    int batches = 100;
-    int n_games_per_batches = 100;
-    int wins_overall[] = {0, 0, 0, 0};
 
     std::ofstream wins_file;
-    wins_file.open("../logs/wins.csv");
-    
-    if(!wins_file.is_open()) throw std::exception("Log file not open");
+    if (do_learning) wins_file.open("../../logs/wins.csv");
+    else wins_file.open("../../logs/sanity_check.csv");
+
+    if(!wins_file.is_open()) std::cout << "Log file not open" <<std::endl;
     wins_file << "Player 0, Player 1, Player 2, Player 3\n";
 
     for(int i = 0; i < batches; i++)

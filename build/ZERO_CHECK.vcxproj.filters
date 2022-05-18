@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\jacob\Documents\LUDO-2022\build\CMakeFiles\f3c11b8561c1874eb976f7b6eae6b9d5\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{CFF687F3-4775-3333-9CBB-BADECBDFDC37}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

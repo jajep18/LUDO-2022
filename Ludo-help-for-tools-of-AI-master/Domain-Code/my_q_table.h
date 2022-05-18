@@ -14,7 +14,7 @@ enum states { Home = 0, Safe = 1, Unprotected = 2, Danger = 3, Goal = 4 };
 class Q_Table{
 public:
 
-    Q_Table();
+    Q_Table(bool learning);
     ~Q_Table();
     double get_q_table_value(std::vector<int> states, int action); 
 
@@ -24,7 +24,7 @@ public:
   
 
 private:
-
+    bool learn;
     double get_reward(int action);
 
     std::vector<std::string> states_vector  = { "Home", "Safe", "Unprotected", "Danger", "Goal"};
