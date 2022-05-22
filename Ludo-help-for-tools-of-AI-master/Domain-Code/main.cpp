@@ -11,12 +11,14 @@ using namespace std;
 
 int main()
 {
-    int batches = 1000;
+    int batches = 100;
     int n_games_per_batches = 100;
     int wins_overall[] = {0, 0, 0, 0};
     bool do_learning = true;
 
-
+            // ******************************************************
+                // For the report !
+                // Plot Q-table values after each game for 100 games
     //Run the unit tests
     test_game tester;
     tester.run_all_tests();
@@ -53,19 +55,19 @@ int main()
         }
         std::cout << "Batch " << i <<" score: \n";
         for(int j = 0; j < 4; j++){
-        cout << "Player " << j << " won " << wins_batch[i] << " games. Winrate "<< ((double)wins_batch[j]/n_games_per_batches)*100 <<"%" << endl;
+        cout << "Player " << j << " won " << wins_batch[j] << " games. Winrate "<< 100.0f *  ((float)wins_batch[j]/((float)n_games_per_batches)) <<"%" << endl;
         }
-            wins_file << ((double)wins_batch[0]/n_games_per_batches)*100 << ", "
-             << ((double)wins_batch[1]/n_games_per_batches)*100 << ", "
-             << ((double)wins_batch[2]/n_games_per_batches)*100 << ", "
-             << ((double)wins_batch[3]/n_games_per_batches)*100 << ", "
-             << "\n";
+            wins_file   << 100.0f * ((float)wins_batch[0]/n_games_per_batches) << ", "
+                        << 100.0f * ((float)wins_batch[1]/n_games_per_batches) << ", "
+                        << 100.0f * ((float)wins_batch[2]/n_games_per_batches) << ", "
+                        << 100.0f * ((float)wins_batch[3]/n_games_per_batches) << ", "
+                        << "\n";
 
     }
     wins_file.close();
     std::cout << "Overall score: \n";
     for(int i = 0; i < 4; i++){
-        cout << "Player " << i << " won " << wins_overall[i] << " games. Winrate "<< ((double)wins_overall[i]/n_games_per_batches/batches )*100 <<"%" << endl;
+        cout << "Player " << i << " won " << wins_overall[i] << " games. Winrate "<< 100.0f * ((float)wins_overall[i]/n_games_per_batches/batches ) <<"%" << endl;
     }
         
     cout << "End of main" << endl;

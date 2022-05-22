@@ -1,6 +1,8 @@
 #include "my_player.h"
 #include <iostream>
 #include <exception>
+//#include <bits/stdc++.h>
+
 
 // struct positions{
 
@@ -92,6 +94,8 @@ int my_player::star_tile_move(int tile)
 bool my_player::is_globe_tile(int tile){
     switch (tile)
     {
+    case 0: 
+        return 1;
     case 8:
         return 1;
     case 21:
@@ -163,7 +167,7 @@ int my_player::predict_action(int piece_moving){ // Possible bug due to pointers
         if(next_pos == 56){
             predicted_move_position[piece_moving] = 99;
             action = Go_goal;
-            increment_pieces_in_goal();
+            // increment_pieces_in_goal();
         }
         else if(next_pos > 50 && next_pos < 56){
             predicted_move_position[piece_moving] = next_pos;
@@ -246,6 +250,7 @@ int my_player::make_decision() //Program starts here
     int best_val_count = 0;
     int best_moves[4];
     int action = -1;
+    int best_actions[4];
     std::vector<int> states = get_current_states(position);
 
 
@@ -260,11 +265,14 @@ int my_player::make_decision() //Program starts here
         if (q_val > best_val){
             best_val = q_val;
             best_moves[0] = piece_current;
+            best_actions[best_val_count] = action;
             best_val_count = 1;
+            
             
         }
         else if(q_val == best_val){
             best_moves[best_val_count] = piece_current;
+            best_actions[best_val_count] = action;
             best_val_count++;
         }
     }
@@ -273,25 +281,33 @@ int my_player::make_decision() //Program starts here
 
 
     // Move according to best available move
-    if(best_val_count == 1) return best_moves[0];
+    if(best_val_count == 1){ 
+
+        int best_move_piece = best_moves[0];
+        int best_action = best_actions[0];
+        predict_action(best_move_piece);
+        std::vector<int> next_states = get_states(predicted_move_position);
+        if(best_action == Go_goal) increment_pieces_in_goal();
+        q_table->update_q_table(states, best_action, next_states, learning_rate, discount_factor);
+
+        return best_move_piece;
+    }
 
     // Something went wrong
     if(best_val_count < 1) throw std::exception();
 
-
     // Move from randomly selected best moves
+
     distribution = std::uniform_int_distribution<int>(0, best_val_count - 1);
     int best_move_piece = best_moves[distribution(generator)];
+    int best_action = best_actions[distribution(generator)];
 
     predict_action(best_move_piece);
     std::vector<int> next_states = get_states(predicted_move_position);
-
-    q_table->update_q_table(states, action, next_states, learning_rate, discount_factor);
-
-
-
-
+    if(best_action == Go_goal) increment_pieces_in_goal();
+    q_table->update_q_table(states, best_action, next_states, learning_rate, discount_factor);
     return best_move_piece;
+   
 }
 
 
@@ -313,13 +329,53 @@ int my_player::get_safe_pieces(std::vector<int> position){
     for(int i = 0; i < 4; i++)
     {
         int tile = position[i];
-        if((is_globe_tile(tile) == true) || (tile > 50 && tile < 56))
+        if((is_globe_tile(tile) == true) || (tile > 50 && tile < 56) )
             total++;
     }
-    
     return total;
 
 }
+int my_player::get_grouped_pieces(std::vector<int> positions){
+
+    int total = 0;
+    std::vector<int> unsafe_locations;
+    for(int i = 0; i < 4; i++)
+    {
+        int tile = position[i];
+        if((is_globe_tile(tile) == true) || (tile > 50 && tile < 56) )
+            continue;
+        else if (tile != -1 && tile != 99){
+            unsafe_locations.push_back(tile);
+        }
+    }
+
+    while(unsafe_locations.size() > 0){
+        int current_tile = unsafe_locations[0];
+        unsafe_locations.erase(unsafe_locations.begin() + 0);
+        int matches = 1;
+        std::vector<int> match_idx;
+        for (int i = 0; i < unsafe_locations.size(); i++)
+        {
+            if (current_tile == unsafe_locations[i])
+            {
+                matches++;
+                match_idx.push_back(i);
+            }
+        }
+        if (matches > 1)
+        {
+            total = total + matches;
+            for (int i = match_idx.size() - 1; i > -1; i--)
+            {
+                unsafe_locations.erase(unsafe_locations.begin() + match_idx[i]);
+            }
+            
+        }
+        
+    }
+    return total;
+}
+
 int my_player::get_scared_pieces(std::vector<int> position){ 
 
     int total = 0;
@@ -331,7 +387,7 @@ int my_player::get_scared_pieces(std::vector<int> position){
             for (int enemy = 4; enemy < 16; enemy++)// Check if enemy behind 6 of piece
             {
                 int difference = position[player] - position[enemy];
-                if (difference <= 6 && difference >= 1)  // if true count++
+                if ((difference <= 6 && difference >= 1) && position[enemy] != -1)  // if true count++
                 {
                 danger = true;
                 }
@@ -384,9 +440,9 @@ std::vector<int> my_player::get_states(std::vector<int> position){
     // "Home", "Safe", "Unprotected", "Danger", "Goal"
     std::vector<int> states;
     int count_home      = get_cozy_pieces(position); // Cozy beacuse it's at home
-    int count_safe      = get_safe_pieces(position);
-    int count_danger    = get_scared_pieces(position); // scared because in danger
-    int count_unsafe    = get_unsafe_pieces(position) - count_danger;
+    int count_safe      = get_safe_pieces(position) + get_grouped_pieces(position);
+    int count_danger    = get_scared_pieces(position); // scared because in danger //NOTE: If this fucks up, add check for grouped pieces to danger
+    int count_unsafe    = get_unsafe_pieces(position) - get_grouped_pieces(position) - count_danger;
     int count_goal      = get_goal_pieces(position);
 
     // std::cout << "Home Count " <<count_home  << " Safe Count "  << count_safe  << " Danger Count " << count_danger 
@@ -421,9 +477,9 @@ std::vector<int> my_player::get_current_states(int* position_){
     }
     
     int count_home      = get_cozy_pieces(converted_position); // Cozy beacuse it's at home
-    int count_safe      = get_safe_pieces(converted_position);
+    int count_safe      = get_safe_pieces(converted_position) + get_grouped_pieces(converted_position);
     int count_danger    = get_scared_pieces(converted_position); // scared because in danger
-    int count_unsafe    = get_unsafe_pieces(converted_position) - count_danger;
+    int count_unsafe    = get_unsafe_pieces(converted_position) - get_grouped_pieces(converted_position) - count_danger;
     int count_goal      = get_goal_pieces(converted_position);
 
     // std::cout << "Home Count " <<count_home  << " Safe Count "  << count_safe  << " Danger Count " << count_danger 

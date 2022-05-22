@@ -72,6 +72,7 @@ private:
 
     int get_cozy_pieces(    std::vector<int> positions); 
     int get_safe_pieces(    std::vector<int> positions);
+    int get_grouped_pieces( std::vector<int> positions);
     int get_scared_pieces(  std::vector<int> positions);
     int get_goal_pieces(    std::vector<int> positions);
     int get_unsafe_pieces(  std::vector<int> positions);
